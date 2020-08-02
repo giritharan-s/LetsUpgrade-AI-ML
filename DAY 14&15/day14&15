@@ -1,0 +1,535 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 1. Create a 3x3x3 array with random values "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[0.61194924, 0.81141413, 0.32295898],\n",
+       "        [0.17645084, 0.61752793, 0.93437184],\n",
+       "        [0.18547264, 0.13012082, 0.70204869]],\n",
+       "\n",
+       "       [[0.07095946, 0.69959964, 0.06087609],\n",
+       "        [0.58431845, 0.41799382, 0.14716368],\n",
+       "        [0.66725231, 0.44348224, 0.67432145]],\n",
+       "\n",
+       "       [[0.67595978, 0.65600689, 0.83283348],\n",
+       "        [0.16641841, 0.05172837, 0.67053393],\n",
+       "        [0.1550161 , 0.66832277, 0.91722831]]])"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "np.random.random((3,3,3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 2.Create a 5x5 matrix with values 1,2,3,4 just below the diagonal"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0, 0, 0, 0, 0],\n",
+       "       [1, 0, 0, 0, 0],\n",
+       "       [0, 2, 0, 0, 0],\n",
+       "       [0, 0, 3, 0, 0],\n",
+       "       [0, 0, 0, 4, 0]])"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.arange(1,5)\n",
+    "np.diag(x,k=-1)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 3.Create a 8x8 matrix and fill it with a checkerboard pattern"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[0 1 0 1 0 1 0 1]\n",
+      " [1 0 1 0 1 0 1 0]\n",
+      " [0 1 0 1 0 1 0 1]\n",
+      " [1 0 1 0 1 0 1 0]\n",
+      " [0 1 0 1 0 1 0 1]\n",
+      " [1 0 1 0 1 0 1 0]\n",
+      " [0 1 0 1 0 1 0 1]\n",
+      " [1 0 1 0 1 0 1 0]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "y=np.zeros((8,8),dtype=int)\n",
+    "y[1::2,::2]=1\n",
+    "y[::2,1::2]=1\n",
+    "print(y)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 4. Normalize a 5x5 random matrix"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.50879436,  1.33691555,  0.83869596, -0.52457655, -1.28607869],\n",
+       "       [ 0.96780471, -1.54963806,  0.3493458 ,  0.10165863, -1.49228166],\n",
+       "       [ 1.71137138, -0.91956806, -0.44396329,  1.78505616, -0.68983574],\n",
+       "       [ 0.8622561 , -1.25690169, -0.03527461, -1.08718787, -0.4180909 ],\n",
+       "       [ 0.67051826, -0.97214015,  0.03918327,  0.12679623,  1.37714086]])"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a=np.random.random((5,5))\n",
+    "n=(a-np.mean(a))/np.std(a)\n",
+    "n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 5.  How to find common values between two arrays?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 6])"
+      ]
+     },
+     "execution_count": 39,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b=np.random.randint(0,10,10)\n",
+    "c=np.random.randint(0,10,10)\n",
+    "np.intersect1d(b,c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 6.How to get the dates of yesterday, today and tomorrow?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2020-07-31\n",
+      "2020-08-01\n",
+      "2020-08-02\n"
+     ]
+    }
+   ],
+   "source": [
+    "yesterday=np.datetime64('today')-np.timedelta64(1)\n",
+    "today=np.datetime64('today')\n",
+    "tomorrow=np.datetime64('today')+np.timedelta64(1)\n",
+    "print(yesterday)\n",
+    "print(today)\n",
+    "print(tomorrow)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 7. Consider two random array A and B, check if they are equal"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b=np.random.randint(0,10,10)\n",
+    "c=np.random.randint(0,10,10)\n",
+    "np.array_equal(c,b)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 8.Create random vector of size 10 and replace the maximum value by 0 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0.65738207, 0.61682627, 0.85553917, 0.        , 0.50606377,\n",
+       "       0.4961571 , 0.5800984 , 0.58202474, 0.60632297, 0.53295842])"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "f=np.random.random((10))\n",
+    "f[f.argmax()]=0\n",
+    "f"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 9. How to print all the values of an array?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "np.set_printoptions(threshold=float(\"inf\"))\n",
+    "Z = np.zeros((20,20))\n",
+    "print(Z)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 10.Subtract the mean of each row of a matrix"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[-0.25223097, -0.35962014,  0.33736724,  0.0155913 ,  0.03031418,\n",
+       "         0.37772376,  0.17884856,  0.05905845,  0.18038194,  0.37042526],\n",
+       "       [-0.2079164 , -0.40950594, -0.440048  , -0.35186886, -0.0052046 ,\n",
+       "        -0.13391102,  0.133687  ,  0.53737101,  0.29906364, -0.3595264 ]])"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x=np.random.random((2,10))\n",
+    "x=x-np.mean(x)\n",
+    "\n",
+    "x"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 11.Consider a given vector, how to add 1 to each element indexed by a second vector (be careful with repeated indices)? "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1. 2. 3. 4. 2. 2. 3. 3. 3. 7.]\n"
+     ]
+    }
+   ],
+   "source": [
+    "Z = np.ones(10)\n",
+    "I = np.random.randint(0,len(Z),20)\n",
+    "Z += np.bincount(I, minlength=len(Z))\n",
+    "print(Z)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[ 1.  3.  5.  7.  3.  3.  5.  5.  5. 13.]\n"
+     ]
+    }
+   ],
+   "source": [
+    "np.add.at(Z, I, 1)\n",
+    "print(Z)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 12.How to get the diagonal of a dot product?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0.40967737 0.91026729 1.05974049]\n"
+     ]
+    }
+   ],
+   "source": [
+    "a=np.random.random((3,3))\n",
+    "b=np.random.random((3,3))\n",
+    "c=np.dot(a,b)\n",
+    "d=np.diag(c)\n",
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 13.How to find the most frequent value in an array?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[49 16 25  9 20  1 45 35  8 20 37 13 15 15 30 12 24 43  7 49  9 46 20 14\n",
+      "  6 48 35 21 14 40 26 12 12 21 11 39  8  5 25 44 18  1 17 11 17 16 34 25\n",
+      " 41 20 28  0 10  3  1 29 25  9 46 46 42 34 26 34 30 15 27 38 45  1 12 27\n",
+      " 41 12 42  9 16 45 43 48 21 25 22 25 36 30 23 30 42 44  8  0  2  1  6 30\n",
+      " 40 24 46  3]\n",
+      "[2 5 1 2 0 1 2 1 3 4 1 2 5 1 2 3 3 2 1 0 4 3 1 1 2 6 2 2 1 1 5 0 0 0 3 2 1\n",
+      " 1 1 1 2 2 3 2 2 3 4 0 2 2]\n",
+      "25\n"
+     ]
+    }
+   ],
+   "source": [
+    "Z = np.random.randint(0,50,100)\n",
+    "print(Z)\n",
+    "y=np.bincount(Z)\n",
+    "print(y)\n",
+    "print(y.argmax())\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 14.How to get the n largest values of an array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[998 999]\n"
+     ]
+    }
+   ],
+   "source": [
+    "Z = np.arange(1000)\n",
+    "np.random.shuffle(Z)\n",
+    "n = 2\n",
+    "\n",
+    "\n",
+    "print (Z[np.argsort(Z)[-n:]])\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 15.How to create a record array from a regular array?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(1, 'hi', 1.5)\n",
+      "(2, 'hello', 15.)\n",
+      "(3, 'bye', 10.)\n"
+     ]
+    }
+   ],
+   "source": [
+    "a1=np.array([1,2,3,4])\n",
+    "a2=np.array(['hi','hello','bye','welcome'])\n",
+    "a3=np.array([1.5,15,10,20])\n",
+    "a4= np.core.records.fromarrays([a1, a2, a3],names='a,b,c')\n",
+    "print(a4[0])\n",
+    "print(a4[1])\n",
+    "print(a4[2])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python",
+   "language": "python",
+   "name": "conda-env-python-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
